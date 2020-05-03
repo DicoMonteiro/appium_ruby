@@ -24,7 +24,7 @@ end
 Então("devo ver {string} como popup") do |message|
     # find_element(id: "android:id/message").displayed?
     # alert = find_element(id: "android:id/message")
-    alert = @screen.login.popup
+    alert = @screen.popup
     expect(alert.text).to eq message
 end
 
@@ -35,7 +35,7 @@ Quando("logo sem sucesso {int} vezes") do |tentativas|
             Quando eu faço login com "tony@stark.com" e "123pass"
         )
         # alert = find_element(id: "android:id/message")
-        alert = @screen.login.popup
+        alert = @screen.popup
         expect(alert.displayed?).to be true
         back
     end

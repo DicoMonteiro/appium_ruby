@@ -1,6 +1,7 @@
 require "appium_lib"
 require "appium_console"
 require "cucumber"
+require "httparty"
 require "rspec"
 require "pry"
 
@@ -22,7 +23,7 @@ caps = Appium.load_appium_txt file: File.expand_path("caps/appium.txt", __dir__)
 Appium::Driver.new(caps, true)
 Appium.promote_appium_methods Object
 
-wait = Selenium::WebDriver::Wait.new(:timeout => 30)
+# wait = Selenium::WebDriver::Wait.new(:timeout => 30)
 
 # driver.manage.timeouts.implicit_wait = 5
 

@@ -14,6 +14,17 @@ Before do
   # end
 end
 
+Before "@login" do
+  @user = { email: "fernando@qaninja.io", pass: "pass123" }
+  @screen.home.go_account
+  @screen.login.with(@user[:email], @user[:pass])
+end
+
+Before "@clean_cart" do
+  @user = { email: "fernando@qaninja.io", pass: "pass123" }
+  PixelApi.new.remove_my_cart(@user[:email])
+end
+
 # After do |scenario|
 #   # scenario.__id__
 #   screenshot = driver.screenshot_as("log/#{scenario.__id__}.png")

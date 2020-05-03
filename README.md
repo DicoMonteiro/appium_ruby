@@ -1,18 +1,18 @@
-## Description
-
+## Description ##
 
 Projeto de automação de aplicativos móveis.
 
 
-## Tecnologias utilizadas
+## Used Tech ##
 
 - Appium;
 - Ruby;
+- Cucumber;
 - Genymotion;
 - Arc;
-  
 
-## Estrutura do projeto
+
+## Structure Project ##
 
 - features
     - step_definitions
@@ -35,3 +35,22 @@ Projeto de automação de aplicativos móveis.
 - app-debug.apk
 - Gemfile.lock
 - README.md
+
+
+## Precondition ##
+
+- Ter Instalado o JDK do Java
+- Ter instalado o Android Studio, apontando no tools arquivos obsoletos
+- Configurado as vaiáveis de ambiente
+- Ruby
+- Bundle
+
+## Configuration ##
+
+- Git clone do projeto
+- Bundle install
+
+
+## Execute ##
+
+- cucumber
