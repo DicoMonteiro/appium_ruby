@@ -1,18 +1,32 @@
+require "Date"
+
 Before do
   driver.start_driver
   driver.manage.timeouts.implicit_wait = 10
 
-  device_tyoe = "android"
-
-  @screen = DroidScreens.new if device_tyoe.eql?("android")
-  @screen = IOSScreens.new if device_tyoe.eql?("ios")
-
-  # if (device_tyoe == "android")
-  #   @screen = DroidScreens.new
-  # else
-  #   @screen = IOSScreens.new
-  # end
+  #device_type = "ios"
+  @screen = DroidScreens.new if DEVICE.eql?("android")
+  if DEVICE.eql?("ios")
+    @screen = IOSScreens.new
+    @screen.allow_notifications
+  end
 end
+
+# Before do
+#   driver.start_driver
+#   driver.manage.timeouts.implicit_wait = 10
+
+#   device_tyoe = "android"
+
+#   @screen = DroidScreens.new if device_tyoe.eql?("android")
+#   @screen = IOSScreens.new if device_tyoe.eql?("ios")
+
+#   # if (device_tyoe == "android")
+#   #   @screen = DroidScreens.new
+#   # else
+#   #   @screen = IOSScreens.new
+#   # end
+# end
 
 Before "@login" do
   @user = { email: "fernando@qaninja.io", pass: "pass123" }
@@ -36,4 +50,35 @@ After do
   embed(screenshot, "image/png", "Screenshot")
 
   driver.quit_driver
+end
+
+at_exit do
+  # @infos = {
+  #   "device" => "Android",
+  #   "environment" => "Dev",
+  #   "Data do Teste" => DateTime.now.to_s,
+  # }
+
+  @infos = {
+    "device" => DEVICE.upcase,
+    "environment" => "Dev",
+    "Data do Teste" => Time.now.to_s,
+  }
+
+  ReportBuilder.configure do |config|
+    config.input_path = "log/report.json"
+    config.report_path = "log/report_pixel"
+    config.report_types = [:html]
+    config.report_title = "Pixel Mobile"
+    config.additional_info = @infos
+    config.color = "indigo"
+  end
+
+  ReportBuilder.build_report
+
+  # ReportBuilder.configure do |config|
+  #   config.input_path = "results/cucumber_json"
+  #   config.report_path = "results/report"
+  # end
+  # ReportBuilder.build_report
 end

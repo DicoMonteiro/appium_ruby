@@ -1,0 +1,12 @@
+---
+default: -p json -p android
+ios: -p json DEVICE_TYPE=ios
+android: -p json DEVICE_TYPE=android
+json: -f json -o log/report.json -f pretty
+
+
+
+# ## ##YAML Template
+# default: -f json -o log/report.json -f pretty
+# # default: json -f pretty
+# # json: --format json --format progress --out=log/report.json

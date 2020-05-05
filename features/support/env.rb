@@ -4,6 +4,7 @@ require "cucumber"
 require "httparty"
 require "rspec"
 require "pry"
+require "report_builder"
 
 # Configuração dos capabilities dentro do env, na inicialização do projeto
 # def caps
@@ -18,7 +19,11 @@ require "pry"
 #   } }
 # end
 
-caps = Appium.load_appium_txt file: File.expand_path("caps/appium.txt", __dir__), verbose: true
+DEVICE = ENV["DEVICE_TYPE"]
+
+caps = Appium.load_appium_txt file: File.expand_path("caps/#{DEVICE}/appium.txt", __dir__), verbose: true
+
+# caps = Appium.load_appium_txt file: File.expand_path("caps/appium.txt", __dir__), verbose: true
 
 Appium::Driver.new(caps, true)
 Appium.promote_appium_methods Object

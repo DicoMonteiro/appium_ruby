@@ -1,8 +1,0 @@
-[caps]
-platformName = "Android"
-deviceName = "VirtualDevice"
-udid = "192.168.56.101:5555"
-app = "/Users/adrianoalmeida/Documents/QANinja_Cursos/curso_appium_ruby/app-debug.apk"
-appPackage = "qaninja.com.pixel"
-appActivity = "qaninja.com.pixel.SplashScreen"
-automationName = "uiautomator2"

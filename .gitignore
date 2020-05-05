@@ -3,3 +3,5 @@ anotacoes.txt
 codigo_fonte
 node_modules
 package-lock.json
+
+.DS_Store
